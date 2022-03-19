@@ -32,5 +32,13 @@ while again == "y":
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
     shift = int(shift % (len(alphabet) / 2))
+    if shift == 0:
+        redo = True
+        while redo:
+            print("The selected shift amount will not encode or decode your message.")
+            shift = int(input("Please enter a different shift value:\n"))
+            shift = int(shift % (len(alphabet) / 2))
+            if shift != 0:
+                redo = False
     caesar(text, shift, direction)
     again = input("Type 'y' to continue.")
